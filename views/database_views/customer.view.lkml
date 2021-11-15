@@ -1,5 +1,4 @@
-include: "base/google_adwords_base.view"
-include: "adwords_config.view"
+include: "/views/base/google_adwords_base.view"
 include: "/views/*/*.view"
 include: "/views/*.view"
 view: customer {
@@ -10,6 +9,11 @@ view: customer {
     FROM @{GOOGLE_ADS_SCHEMA}."ACCOUNT" as account
 
   ) ;;
+
+    dimension: adwords_schema {
+      hidden: yes
+      sql:@{GOOGLE_ADS_SCHEMA};;
+    }
 
     dimension: account_currency_code {
       hidden: yes
